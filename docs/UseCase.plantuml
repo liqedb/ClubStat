@@ -1,0 +1,70 @@
+@startuml ClubStat Use Case
+left to right direction
+
+actor "Посетитель" as Visitor
+actor "Администратор" as Admin
+
+rectangle "ClubStat" {
+
+    usecase "Регистрация" as UC_Register
+
+    usecase "Вход в систему" as UC_LoginVisitor
+    usecase "Вход в систему" as UC_LoginAdmin
+
+    usecase "Меню занятий" as UC_Workout
+    usecase "Меню тренеров" as UC_Сoachs
+    usecase "Меню бронирований" as UC_Reservations
+    usecase "Добавление администратора" as UC_CreateAdmin
+
+    usecase "Просмотр занятий" as UC_ViewWorkout
+    usecase "Добавление занятий" as UC_AddWorkout
+    usecase "Удаление занятий" as UC_DeleteWorkout
+
+    usecase "Просмотр тренеров" as UC_ViewСoachs
+    usecase "Добавление тренера" as UC_AddСoach
+    usecase "Удаление тренера" as UC_DeleteСoach
+
+    usecase "Просмотр своих бронирований" as UC_MyReservations
+    usecase "Бронирование занятия" as UC_CreateReservation
+
+    usecase "Просмотр всех бронирований" as UC_AllReservations
+    usecase "Отмена занятия" as UC_ReturnWorkout
+
+    usecase "Выбор занятия" as UC_SelectWorkout
+    usecase "Ввод данных занятия" as UC_InputWorkout
+    usecase "Выбор тренеров" as UC_SelectCoach
+}
+
+Visitor -- UC_Register
+Visitor -- UC_LoginVisitor
+
+Admin -- UC_LoginAdmin
+UC_LoginVisitor -- UC_ViewWorkout
+UC_LoginVisitor -- UC_MyReservations
+UC_LoginVisitor -- UC_CreateReservation
+
+UC_LoginAdmin -- UC_Workout
+UC_LoginAdmin -- UC_Сoachs
+UC_LoginAdmin -- UC_Reservations
+UC_LoginAdmin -- UC_CreateAdmin
+
+UC_Workout -- UC_ViewWorkout
+UC_Workout -- UC_AddWorkout
+UC_Workout -- UC_DeleteWorkout
+
+UC_Сoachs -- UC_ViewСoachs
+UC_Сoachs -- UC_AddСoach
+UC_Сoachs -- UC_DeleteСoach
+
+UC_Reservations -- UC_AllReservations
+UC_Reservations -- UC_ReturnWorkout
+
+UC_CreateReservation ..> UC_ViewWorkout : <<include>>
+UC_CreateReservation ..> UC_SelectWorkout : <<include>>
+
+UC_AddWorkout ..> UC_InputWorkout : <<include>>
+UC_AddWorkout ..> UC_ViewСoachs : <<include>>
+UC_AddWorkout ..> UC_SelectCoach : <<include>>
+
+@enduml
+
