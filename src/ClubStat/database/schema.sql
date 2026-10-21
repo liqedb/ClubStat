@@ -65,3 +65,27 @@ CREATE TABLE reservation(
 );
 
 
+INSERT INTO user_roles (name) VALUES 
+    ('admin'),
+    ('visitor');
+
+INSERT INTO coach (name, surname, patronymic) VALUES 
+    ('Иван', 'Петров', 'Сергеевич'),
+    ('Мария', 'Сидорова', NULL);
+
+INSERT INTO workout (name, description) VALUES 
+    ('Йога', 'Занятие по йоге для начинающих'),
+    ('Кроссфит', 'Высокоинтенсивная функциональная тренировка');
+
+
+INSERT INTO users (name, surname, patronymic, login, password, user_role) VALUES 
+    ('Админ', 'Системы', NULL, 'admin', 'admin123', 1),
+    ('Михаил', 'Петров', 'Сергеевич', 'misha2008', 'legend', 2);
+
+INSERT INTO coach_workout (coach_id, workout_id) VALUES 
+    (1, 1)
+    (2, 2);
+
+INSERT INTO reservation (admin_id, visitor_id, workout_id, reservation_date, status) VALUES 
+    (1, 1, 1, '2026-10-8 10:00', 2), 
+    (1, 2, 2, '2026-10-9 18:00', 1);
