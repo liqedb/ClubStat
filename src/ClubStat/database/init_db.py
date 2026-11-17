@@ -1,12 +1,13 @@
-import sqlite3
+from pathlib import Path
+from .connection import get_connection
 
-conn = sqlite3.connect('clubstat.db')
-cur = conn.cursor()
+SCHEMA_PATH = Path(__file__).with_name("schema.sql")
 
-with open('src/ClubStat/database/schema.sql', 'r', encoding='utf-8') as f:
-    sql_script = f.read()
+def init_db() -> None:
+    """Create tables and reference data without deleting existing records."""
+    with get_connection() as connection:
+        connection.executescript(SCHEMA_PATH.read_text(encoding="utf-8"))
 
-cur.executescript(sql_script)
-
-conn.commit()
-conn.close()
+if __name__ == "__main__":
+    init_db()
+    print("База данных ClubStat готова.")
