@@ -1,7 +1,6 @@
-from database import dataclass
+from dataclasses import dataclass
 
-
-@dataclass
+@dataclass(slots=True)
 class Coach:
     coach_id: int
     name: str
