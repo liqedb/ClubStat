@@ -1,6 +1,6 @@
-from database import dataclass
+from dataclasses import dataclass
 
-@dataclass
-class User_roles:
+@dataclass(slots=True)
+class UserRole:
     user_role_id: int
     name: str
