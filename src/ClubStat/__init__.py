@@ -1,0 +1,1 @@
+"""ClubStat: club attendance management application."""
