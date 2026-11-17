@@ -1,6 +1,6 @@
-from database import dataclass
+from dataclasses import dataclass
 
-@dataclass
-class Reservation_status:
+@dataclass(slots=True)
+class ReservationStatus:
     reservation_status_id: int
     name: str
